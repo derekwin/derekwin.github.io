@@ -1,77 +1,279 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-        <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,minimal-ui" />
-    <title>SECLEE</title>
-<link rel='stylesheet' id='puma-css'  href='https://derekwin.github.io/styles/main.css' type='text/css' media='screen' />
-<link rel='stylesheet' id='puma-css'  href='https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css' media='screen' />
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-<script type='text/javascript' src='https://derekwin.github.io/media/scripts/jquery.js'></script>
-<script type='text/javascript' src='https://derekwin.github.io/media/scripts/jquery-migrate.min.js'></script>
-        <script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
-         <script >hljs.initHighlightingOnLoad();</script>
-         
-</head>
-<body class="home blog">
-	<!--加入跟随滑动的顶部-->
-	<header id="masthead" class="site-header" role="banner">
-		<div class="site-branding">
-			<h1 class="site-title">
-				<a href="https://derekwin.github.io" title="SECLEE">SECLEE</a>
-			</h1>
-		</div>
+<html>
+  <head>
+      <meta charset="UTF-8"/>
 
-		<a class="primary-nav-trigger" href="javascript:void(0)">
-			<span class="menu-icon"></span>
-		</a>
-		
-	</header>
-    	<div class="site-navigation-wrapper">
-		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<ul class="primary-nav">
-                    
-				<li id="menu-item-30" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-30"><a title="首页" href="/">首页</a></li>
-                
-				<li id="menu-item-30" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-30"><a title="归档" href="/archives">归档</a></li>
-                
-				<li id="menu-item-30" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-30"><a title="标签" href="/tags">标签</a></li>
-                
-				<li id="menu-item-30" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-30"><a title="关于" href="/post/about">关于</a></li>
-                
-	
-			</ul>
-		</nav>			
-	</div>
-	<!--跟随滑动的顶部结束-->
-	<!--大屏banner开始-->
-    
-	<div class="site-banner u-textAlignCenter hasImage" style="background-image:url(http://www.seclee.com/img/color_dark.850f9618.jpg)">
-		<div class="fade-cover"></div>
-		<div class="banner-txt">
-			<h2>SECLEE</h2>
-		</div>
-		<div class="banner-txt">
-			<p>为了专心写东西</p>
-		</div>	
-	</div>
-	<!--大屏banner结束-->
-	<div class="site-main">
-	<div class="surface-content">    <main class="main-content">
-        <section class="blockGroup">
-                
-            <article class="block block--inset block--list">
-    <h2 class="block-title post-featured" itemprop="headline">
-        <a href="https://derekwin.github.io/post/zhe-teng-de-qi-shi-xiang-xin-fa-xing-ban-de-li-liang/">折腾的启示-相信发行版的力量</a>
-    </h2>
-    <div class="block-postMetaWrap u-textAlignCenter">
-        <time>2020-03-31</time>
-    </div>
-    <div class="block-snippet block-snippet--subtitle grap" itemprop="about">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="keywords" content="seclee">
+<meta name="description" content="为了专心写东西">
+<meta name="theme-color" content="#000">
+<title>SECLEE</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1585633595506">
+<link rel="stylesheet" href="/styles/main.css">
+<link rel="stylesheet" href="/media/css/gemini.css">
+
+<link rel="stylesheet" href="/media/fonts/font-awesome.css">
+<link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Rosario:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+<link href="/media/hljs/styles/vs2015.css" rel="stylesheet">  
+
+<script src="/media/hljs/highlight.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.ui.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+
+
+
+  </head>
+  <body>
+    <div class="head-top-line"></div>
+    <div class="header-box">
+      
+<div class=" gemini">
+  <header class="header  ">
+    <div class="blog-header box-shadow-wrapper bg-color " id="header">
+      <div class="nav-toggle" id="nav_toggle">
+        <div class="toggle-box">
+          <div class="line line-top"></div>
+          <div class="line line-center"></div>
+          <div class="line line-bottom"></div>
+        </div>
+      </div>
+      <div class="site-meta">       
+        <div class="site-title">
+          
+            <a href="/" class="brand">
+              <span>SECLEE</span>
+            </a>  
+          
+        </div>
+        
+          <p class="subtitle">seclee.com的附属blog</p>
+        
+      </div>
+      <nav class="site-nav" id="site_nav">
+        <ul id="nav_ul">
+          
             
-                    <p class="with-img"><img width="1139" height="759" src="https://derekwin.github.io/post-images/zhe-teng-de-qi-shi-xiang-xin-fa-xing-ban-de-li-liang.jpg" class="attachment-full size-full wp-post-image" alt="折腾的启示-相信发行版的力量" /></p>
-                    
-                    <h3 id="orangepioneplus折腾启示">Orangepioneplus折腾启示</h3>
+            
+              
+            
+            <li class="nav-item nav-item-active">
+              
+              
+                <a href="/" target="_self">
+                  <i class="fa fa-home"></i> 首页
+                </a>
+              
+            </li>
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/archives" target="_self">
+                  <i class="fa fa-archive"></i> 归档
+                </a>
+              
+            </li>
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/tags" target="_self">
+                  <i class="fa fa-tags"></i> 标签
+                </a>
+              
+            </li>
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/post/about" target="_self">
+                  <i class="fa fa-user"></i> 关于
+                </a>
+              
+            </li>
+          
+          
+            
+              <li class="nav-item ">
+                <a href="/friends" target="_self">
+                  
+                    fa-ship友情链接
+                  
+                </a>
+              </li>
+            
+          
+        </ul>
+      </nav>
+    </div>
+  </header>
+</div>
+
+<script type="text/javascript"> 
+ 
+  let showNav = true;
+
+  let navToggle = document.querySelector('#nav_toggle'),
+  siteNav = document.querySelector('#site_nav');
+  
+  function navClick() {
+    let sideBar = document.querySelector('.sidebar');
+    let navUl = document.querySelector('#nav_ul');
+    navToggle.classList.toggle('nav-toggle-active');
+    siteNav.classList.toggle('nav-menu-active');
+    if (siteNav.classList.contains('nav-menu-active')) {
+      siteNav.style = "height: " + (navUl.children.length * 42) +"px !important";
+    } else {
+      siteNav.style = "";
+    }
+  }
+
+  navToggle.addEventListener('click',navClick);  
+</script>
+    </div>
+    <div class="main-continer">
+      
+      <div class="section-layout gemini ">
+        <div class="section-layout-wrapper">
+          <div id="sidebarMeta" class="sidebar">
+    
+<div class="sidebar-wrapper box-shadow-wrapper bg-color">
+  <div class="sidebar-item">
+    <img class="site-author-image right-motion" src="/images/avatar.png"/>
+    <p class="site-author-name">SECLEE</p>
+    <p class="site-description right-motion">为了专心写东西</p>
+  </div>
+  <div class="sidebar-item side-item-stat right-motion">
+    <div class="sidebar-item-box">
+      <a href="/archives/">
+        
+        <span class="site-item-stat-count">3</span>
+        <span class="site-item-stat-name">文章</span>
+      </a>
+    </div>
+    <div class="sidebar-item-box">
+      <a href="">
+        <span class="site-item-stat-count">3</span>
+        <span class="site-item-stat-name">分类</span>
+      </a>
+    </div>
+    <div class="sidebar-item-box">
+      <a href="/tags/">
+        <span class="site-item-stat-count">3</span>
+        <span class="site-item-stat-name">标签</span>
+      </a>
+    </div>
+  </div>
+  
+    
+      <div class="sidebar-item" style="border-top: 1px dotted #ccc; margin-top: 10px;">
+      </div>
+    
+  
+  
+    <div class="sidebar-item sidebar-item-social">
+      <div class="social-item">
+        
+        
+          
+            <a class="social-img" href="#">
+              <img src="" />
+              <i class="fa fa-globe" title="" ></i>
+            </a>
+          
+        
+      </div>
+    </div>
+  
+
+
+</div>
+</div>
+<script>
+  let sidebarMeta = document.querySelector('#sidebarMeta');
+  let scheme = 'gemini';
+  let sidebarWrapper = document.querySelector('.sidebar-wrapper');
+  if (sidebarMeta && (scheme === 'pisces' || scheme === 'gemini')) {
+    document.addEventListener('scroll', function(e) {
+      if (document.scrollingElement.scrollTop > parseInt(sidebarMeta.style.marginTop) + 10) {
+        sidebarWrapper.classList.add('home-sidebar-fixed')
+      } else {
+        sidebarWrapper.classList.remove('home-sidebar-fixed')
+      }
+    });
+  }
+  </script>
+          <div class="section-box gemini">
+            <section class="section  posts-expand slide-down-in">
+              
+  <article class="post-list-box  post box-shadow-wrapper">
+    <div class="article-wrapper bg-color">
+      <header class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://derekwin.github.io/post/zhe-teng-de-qi-shi-xiang-xin-fa-xing-ban-de-li-liang/">
+      折腾的启示-相信发行版的力量
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+      <span class="meta-item">
+        <i class="fa fa-thumb-tack"></i>
+        <span>置顶</span>
+        <span class="post-meta-divider">|</span>
+      </span>
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span>发布于</span>
+      <span>2020-03-31</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+      <span class="meta-item">
+        <i class="fa fa-folder-o"></i>
+        <span class="pc-show">分类于</span>
+        
+          
+            <a href="https://derekwin.github.io/tag/lAmI45pI2/">
+              <span>Armbian</span>
+            </a>
+          
+        
+      </span>
+      <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>9分钟</span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>1866<span class="pc-show">字数</span></span>
+    </span>
+    
+  </div>
+</header>
+      <div class="post-body">
+        
+          <h3 id="orangepioneplus折腾启示">Orangepioneplus折腾启示</h3>
 <h2 id="armbian真香">Armbian真香</h2>
 <p>结论</p>
 <ul>
@@ -82,142 +284,346 @@
 <li>开发板实现虚拟路由器，需要网卡支持全双工</li>
 </ul>
 
-                <p class="u-textAlignCenter"><a class="more-link" href="https://derekwin.github.io/post/zhe-teng-de-qi-shi-xiang-xin-fa-xing-ban-de-li-liang/" title="折腾的启示-相信发行版的力量">READ MORE</a></p>
-    </div>
-    <div class="block-footer">
-        In  <a href="https://derekwin.github.io/tag/lAmI45pI2/" rel="category tag">Armbian</a>.  
-        <div class="block-footer-inner">
-                9 min read .
+        
+        
+        <div class="post-button text-center">
+          <a class="btn" href="https://derekwin.github.io/post/zhe-teng-de-qi-shi-xiang-xin-fa-xing-ban-de-li-liang/" rel="contents">
+            阅读全文 »
+          </a>
         </div>
+        
+      </div>
+      
     </div>
-</article>
+  </article>
 
-            <article class="block block--inset block--list">
-    <h2 class="block-title post-featured" itemprop="headline">
-        <a href="https://derekwin.github.io/post/gpioorangepioneplus/">GPIO.orangepioneplus</a>
-    </h2>
-    <div class="block-postMetaWrap u-textAlignCenter">
-        <time>2020-03-31</time>
-    </div>
-    <div class="block-snippet block-snippet--subtitle grap" itemprop="about">
-            
-                    <p class="with-img"><img width="1139" height="759" src="https://derekwin.github.io/post-images/gpioorangepioneplus.jpg" class="attachment-full size-full wp-post-image" alt="GPIO.orangepioneplus" /></p>
-                    
-                    
-                <p class="u-textAlignCenter"><a class="more-link" href="https://derekwin.github.io/post/gpioorangepioneplus/" title="GPIO.orangepioneplus">READ MORE</a></p>
-    </div>
-    <div class="block-footer">
-        In  <a href="https://derekwin.github.io/tag/mexPIPC8u/" rel="category tag">orangepioneplus</a>.  
-        <div class="block-footer-inner">
-                2 min read .
+  <article class="post-list-box  post box-shadow-wrapper">
+    <div class="article-wrapper bg-color">
+      <header class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://derekwin.github.io/post/gpioorangepioneplus/">
+      GPIO.orangepioneplus
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span>发布于</span>
+      <span>2020-03-31</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+      <span class="meta-item">
+        <i class="fa fa-folder-o"></i>
+        <span class="pc-show">分类于</span>
+        
+          
+            <a href="https://derekwin.github.io/tag/mexPIPC8u/">
+              <span>orangepioneplus</span>
+            </a>
+          
+        
+      </span>
+      <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>2分钟</span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>204<span class="pc-show">字数</span></span>
+    </span>
+    
+  </div>
+</header>
+      <div class="post-body">
+        
+          
+        
+        
+        <div class="post-button text-center">
+          <a class="btn" href="https://derekwin.github.io/post/gpioorangepioneplus/" rel="contents">
+            阅读全文 »
+          </a>
         </div>
+        
+      </div>
+      
     </div>
-</article>
+  </article>
 
-            <article class="block block--inset block--list">
-    <h2 class="block-title post-featured" itemprop="headline">
-        <a href="https://derekwin.github.io/post/hello-gridea/">Hello Gridea</a>
-    </h2>
-    <div class="block-postMetaWrap u-textAlignCenter">
-        <time>2018-12-12</time>
-    </div>
-    <div class="block-snippet block-snippet--subtitle grap" itemprop="about">
-            
-                    <p class="with-img"><img width="1139" height="759" src="https://derekwin.github.io/post-images/hello-gridea.png" class="attachment-full size-full wp-post-image" alt="Hello Gridea" /></p>
-                    
-                    <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
+  <article class="post-list-box  post box-shadow-wrapper">
+    <div class="article-wrapper bg-color">
+      <header class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://derekwin.github.io/post/hello-gridea/">
+      Hello Gridea
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span>发布于</span>
+      <span>2018-12-12</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+      <span class="meta-item">
+        <i class="fa fa-folder-o"></i>
+        <span class="pc-show">分类于</span>
+        
+          
+            <a href="https://derekwin.github.io/tag/KiiIZVScy/">
+              <span>Gridea</span>
+            </a>
+          
+        
+      </span>
+      <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>2分钟</span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>298<span class="pc-show">字数</span></span>
+    </span>
+    
+  </div>
+</header>
+      <div class="post-body">
+        
+          <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
 ✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
 
-                <p class="u-textAlignCenter"><a class="more-link" href="https://derekwin.github.io/post/hello-gridea/" title="Hello Gridea">READ MORE</a></p>
-    </div>
-    <div class="block-footer">
-        In  <a href="https://derekwin.github.io/tag/KiiIZVScy/" rel="category tag">Gridea</a>.  
-        <div class="block-footer-inner">
-                2 min read .
+        
+        
+        <div class="post-button text-center">
+          <a class="btn" href="https://derekwin.github.io/post/hello-gridea/" rel="contents">
+            阅读全文 »
+          </a>
         </div>
+        
+      </div>
+      
     </div>
-</article>
+  </article>
+  
+              
+              
+<div class="page bg-color">
+  <ul class="pagination-ul">
+    
+    
+      
+        <li class="pagination-li pagination-active">
+            <a href="/page/../">
+              1
+            </a>
+        </li>
+      
+    
+    
+  </ul>
+</div>
+            </section>
+          </div>
+        </div>
+      </div>
+      <div class="footer-box">
+  <footer class="footer">
+    <div class="copyright">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | © 2019-2020 Theme By HsxyHao
+    </div>
+    <div class="poweredby">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>Link to my site <a href="http://www.seclee.com" target="_green">seclee.com</a>
+    </div>
+  </footer>
+  
+  
+  <div class="gemini back-to-top" id="back_to_top">
+    <i class="fa fa-arrow-up"></i>
+    
+    <span class="scrollpercent">
+      <span id="back_to_top_text">0</span>%
+    </span>
+    
+  </div>
+  
+  
+  
+</div>
+<script>
 
-</section>
+  let sideBarOpen = 'sidebar-open';
+  let body = document.body;
+  let back2Top = document.querySelector('#back_to_top'),
+  back2TopText = document.querySelector('#back_to_top_text'),
+  drawerBox = document.querySelector('#drawer_box'),
+  rightSideBar = document.querySelector('.sidebar'),
+  viewport = document.querySelector('body');
 
-    </main>
-</div></div>
-<script type="text/javascript">
-//点击加载更多
-jQuery(document).ready(function($) {
-    //点击下一页的链接(即那个a标签)
-    $(' .button').click(function() {
-        $this = $(this);
-        $this.addClass('loading').text('正在努力加载'); //给a标签加载一个loading的class属性，用来添加加载效果
-        var href = $this.attr('href'); //获取下一页的链接地址
-        if (href != undefined) { //如果地址存在
-            $.ajax({ //发起ajax请求
-                url: href,
-                //请求的地址就是下一页的链接
-                type: 'get',
-                //请求类型是get
-                error: function(request) {
-                    //如果发生错误怎么处理
-                },
-                success: function(data) { //请求成功
-                    $this.removeClass('loading').text('点击查看更多'); //移除loading属性
-                    var $res = $(data).find('.block--list '); //从数据中挑出文章数据，请根据实际情况更改
-                    $('.blockGroup').append($res.fadeIn(500)); //将数据加载加进posts-loop的标签中。
-                    var newhref = $(data).find(' .button').attr('href'); //找出新的下一页链接
-                    if (newhref != undefined) {
-                        $('.button').attr('href', newhref);
-                    } else {
-                        $('.button').remove(); //如果没有下一页了，隐藏
-                    }
-                }
+  function scrollAnimation(currentY, targetY) {
+   
+    let needScrollTop = targetY - currentY
+    let _currentY = currentY
+    setTimeout(() => {
+      const dist = Math.ceil(needScrollTop / 10)
+      _currentY += dist
+      window.scrollTo(_currentY, currentY)
+      if (needScrollTop > 10 || needScrollTop < -10) {
+        scrollAnimation(_currentY, targetY)
+      } else {
+        window.scrollTo(_currentY, targetY)
+      }
+    }, 1)
+  }
+
+  back2Top.addEventListener("click", function(e) {
+    scrollAnimation(document.scrollingElement.scrollTop, 0);
+    e.stopPropagation();
+    return false;
+  });
+  
+  window.addEventListener('scroll', function(e) {
+    let percent = document.scrollingElement.scrollTop / (document.scrollingElement.scrollHeight - document.scrollingElement.clientHeight) * 100;
+    if (percent > 1 && !back2Top.classList.contains('back-top-active')) {
+      back2Top.classList.add('back-top-active');
+    }
+    if (percent == 0) {
+      back2Top.classList.remove('back-top-active');
+    }
+    if (back2TopText) {
+      back2TopText.textContent = Math.floor(percent);
+    }
+  });
+
+  
+  let hasCacu = false;
+  window.onresize = function() {
+    if (window.width > 991) {
+      calcuHeight();
+    } else {
+      hasCacu = false;
+    }
+  }
+
+  function calcuHeight() {
+    // 动态调整站点概览高度
+    if (!hasCacu && back2Top.classList.contains('pisces') || back2Top.classList.contains('gemini')) {
+      let sideBar = document.querySelector('.sidebar');
+      let navUl = document.querySelector('#site_nav');
+      sideBar.style = 'margin-top:' + (navUl.offsetHeight + navUl.offsetTop + 15) + 'px;';
+      hasCacu = true;
+    }
+  }
+  calcuHeight();
+  
+  let open = false, MOTION_TIME = 300, RIGHT_MOVE_DIS = '320px';
+
+  if (drawerBox) {
+    let rightMotions = document.querySelectorAll('.right-motion');
+    let right = drawerBox.classList.contains('right');
+
+    let transitionDir = right ? "transition.slideRightIn" : "transition.slideLeftIn";
+
+    let openProp, closeProp;
+    if (right) {
+      openProp = {
+        paddingRight: RIGHT_MOVE_DIS 
+      };
+      closeProp = {
+        paddingRight: '0px'
+      };
+    } else {
+      openProp = {
+        paddingLeft: RIGHT_MOVE_DIS 
+      };
+      closeProp = {
+        paddingLeft: '0px'
+      };
+    }
+
+    drawerBox.onclick = function() {
+      open = !open;
+      window.Velocity(rightSideBar, 'stop');
+      window.Velocity(viewport, 'stop');
+      window.Velocity(rightMotions, 'stop');
+      if (open) {
+        window.Velocity(rightSideBar, {
+          width: RIGHT_MOVE_DIS
+        }, {
+          duration: MOTION_TIME,
+          begin: function() {
+            window.Velocity(rightMotions, transitionDir,{ });
+          }
+        })
+        window.Velocity(viewport, openProp,{
+          duration: MOTION_TIME
+        });
+      } else {
+        window.Velocity(rightSideBar, {
+          width: '0px'
+        }, {
+          duration: MOTION_TIME,
+          begin: function() {
+            window.Velocity(rightMotions, {
+              opacity: 0
             });
-        }
-        return false;
-    });
-});
+          }
+        })
+        window.Velocity(viewport, closeProp ,{
+          duration: MOTION_TIME
+        });
+      }
+      for (let i = 0; i < drawerBox.children.length; i++) {
+        drawerBox.children[i].classList.toggle('muse-line');
+      }
+      drawerBox.classList.toggle(sideBarOpen);
+    }
+  }
+
+  // 代码高亮
+  hljs.initHighlightingOnLoad();
+
 </script>
-	<footer class="site-footer u-textAlignCenter">
-    	<div class="footer-branding">
-            <a href="https://derekwin.github.io" title="SECLEE">SECLEE</a>
-									<p class="site-description">SECLEE</p>
-			         </div>
-		 <hr />
-		 <div class="social-links">
-		                       
-                            
-                           
-                            
-                           
-                            
-                           
-                            
-                           
-                            
-                           
-                            
-                           
-                            
-                           
-                            
-                           
-                            
-                           
-                            	
-			<span class="social-link"><a href="1446103183" target="_blank"><i class="iconfont icon-qq"></i></a></span>	
-			                         
-                           
-                            
-                           
-                            
-                           
-				</div>
-        <div class="footer-copy">
-                Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>Link to my site <a href="http://www.seclee.com" target="_green">seclee.com</a>
-        </div>
-
-    </footer>
-	<div class="back-to-top u-hide" onclick="backToTop();"><i class="iconfont icon-xiangshang"></i></div>
-
-<script type='text/javascript' src='https://derekwin.github.io/media/scripts/main.js'></script>
-</body>
+      <div class="light-box" id="light_box"></div>
+<script>
+  let imgs = document.querySelectorAll('.post-body img');
+  let lightBox = document.querySelector('#light_box');
+  lightBox.addEventListener('mousedown', (e) => {
+    e.preventDefault()
+  })
+  lightBox.addEventListener('mousewheel', (e) => {
+    e.preventDefault()
+  })
+  let width = window.innerWidth * 0.8;
+  lightBox.onclick= () => {
+    let img = lightBox.querySelector('img');
+    lightBox.style = '';
+    img && img.remove();
+  }
+  imgs.forEach(item => {
+    item.onclick = function(e) {
+      let lightImg = document.createElement('img');
+      lightImg.src = this.src;
+      lightBox.style = `height: 100%; opacity: 1; background-color: rgba(0, 0, 0, 0.5);cursor: zoom-out;`;
+      lightImg.style = `width: ${width}px; border: 1px solid #fff; border-radius: 2px;`;
+      lightImg.onclick = function() {
+        lightBox.style = '';
+        this.remove();
+      }
+      lightBox.append(lightImg);
+    }
+  })
+</script>
+    </div>
+  </body>
+  <script src="/media/js/motion.js"></script>
 </html>
