@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,minimal-ui" />
+    <title>GPIO.orangepioneplus | SECLEE</title>
+<link rel='stylesheet' id='puma-css'  href='https://derekwin.github.io/styles/main.css' type='text/css' media='screen' />
+<link rel='stylesheet' id='puma-css'  href='https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css' media='screen' />
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<script type='text/javascript' src='https://derekwin.github.io/media/scripts/jquery.js'></script>
+<script type='text/javascript' src='https://derekwin.github.io/media/scripts/jquery-migrate.min.js'></script>
+        <script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+         <script >hljs.initHighlightingOnLoad();</script>
+         
+</head>
+<body class="single single-post postid-3788 single-format-standard">
+	<!--加入跟随滑动的顶部-->
+	<header id="masthead" class="site-header" role="banner">
+		<div class="site-branding">
+			<h1 class="site-title">
+				<a href="https://derekwin.github.io" title="SECLEE">SECLEE</a>
+			</h1>
+		</div>
+
+		<a class="primary-nav-trigger" href="javascript:void(0)">
+			<span class="menu-icon"></span>
+		</a>
+		
+	</header>
+		<div class="site-navigation-wrapper">
+		<nav id="site-navigation" class="main-navigation" role="navigation">
+			<ul class="primary-nav">
+                    
+				<li id="menu-item-30" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-30"><a title="首页" href="/">首页</a></li>
+                
+				<li id="menu-item-30" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-30"><a title="归档" href="/archives">归档</a></li>
+                
+				<li id="menu-item-30" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-30"><a title="标签" href="/tags">标签</a></li>
+                
+				<li id="menu-item-30" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-30"><a title="关于" href="/post/about">关于</a></li>
+                
+	
+			</ul>
+		</nav>			
+	</div>
+	<!--跟随滑动的顶部结束-->
+	<div class="surface-content">    <main class="main-content">
+        <section class="section-body">
+                            <header class="section-header u-textAlignCenter">
+                    <h2 class="grap--h2">GPIO.orangepioneplus</h2>
+                    <div class="block-postMetaWrap">
+                        <time>2020-03-31</time>
+                    </div>
+                </header>
+                <div class="grap">
+					  <p class="with-img"><img width="1139" height="759" src="https://derekwin.github.io/post-images/gpioorangepioneplus.jpg" class="attachment-full size-full wp-post-image" alt="GPIO.orangepioneplus" /></p>
+					<h4 id="引脚信息">引脚信息</h4>
+<p>26-pin - from wiki</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">3.3V</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">5V</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">PB21</td>
+<td style="text-align:center">TWI2-SDA</td>
+<td style="text-align:center">4</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">PB20</td>
+<td style="text-align:center">TWI2-SCK</td>
+<td style="text-align:center">6</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center">PI3</td>
+<td style="text-align:center">PWM1</td>
+<td style="text-align:center">8</td>
+</tr>
+<tr>
+<td style="text-align:center">9</td>
+<td style="text-align:center">GND</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">PH1</td>
+</tr>
+<tr>
+<td style="text-align:center">11</td>
+<td style="text-align:center">PI19</td>
+<td style="text-align:center">UART2_RX</td>
+<td style="text-align:center">12</td>
+</tr>
+<tr>
+<td style="text-align:center">13</td>
+<td style="text-align:center">PI18</td>
+<td style="text-align:center">UART2_TX</td>
+<td style="text-align:center">14</td>
+</tr>
+<tr>
+<td style="text-align:center">15</td>
+<td style="text-align:center">PI17</td>
+<td style="text-align:center">UART2_CTS</td>
+<td style="text-align:center">16</td>
+</tr>
+<tr>
+<td style="text-align:center">17</td>
+<td style="text-align:center">3.3V</td>
+<td style="text-align:center">18</td>
+<td style="text-align:center">PH21</td>
+</tr>
+<tr>
+<td style="text-align:center">19</td>
+<td style="text-align:center">PI12</td>
+<td style="text-align:center">SPI0_MOSI</td>
+<td style="text-align:center">20</td>
+</tr>
+<tr>
+<td style="text-align:center">21</td>
+<td style="text-align:center">PI13</td>
+<td style="text-align:center">SPI0_MISO</td>
+<td style="text-align:center">22</td>
+</tr>
+<tr>
+<td style="text-align:center">23</td>
+<td style="text-align:center">PI11</td>
+<td style="text-align:center">SPI0_CLK</td>
+<td style="text-align:center">24	PI10</td>
+</tr>
+<tr>
+<td style="text-align:center">25</td>
+<td style="text-align:center">GND</td>
+<td style="text-align:center">26</td>
+<td style="text-align:center">PI14</td>
+</tr>
+</tbody>
+</table>
+<p>官方手册</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">con12-p01</td>
+<td style="text-align:center">VCC-3.3V</td>
+<td style="text-align:center">VCC-IO</td>
+</tr>
+<tr>
+<td style="text-align:center">con12-p02</td>
+<td style="text-align:center">VCC-5V</td>
+<td style="text-align:center">DCIN</td>
+</tr>
+<tr>
+<td style="text-align:center">con12-p03</td>
+<td style="text-align:center">TWI1-SDA</td>
+<td style="text-align:center">PH06</td>
+</tr>
+<tr>
+<td style="text-align:center">con12-p04</td>
+<td style="text-align:center">VCC-5V</td>
+<td style="text-align:center">DCIN</td>
+</tr>
+<tr>
+<td style="text-align:center">con12-p05</td>
+<td style="text-align:center">TWI1-SCK</td>
+<td style="text-align:center">PH05</td>
+</tr>
+<tr>
+<td style="text-align:center">con12-p06</td>
+<td style="text-align:center">GND</td>
+<td style="text-align:center">GND</td>
+</tr>
+<tr>
+<td style="text-align:center">con12-p07</td>
+<td style="text-align:center">PWM1</td>
+<td style="text-align:center">PK04</td>
+</tr>
+<tr>
+<td style="text-align:center">con12-p08</td>
+<td style="text-align:center">PD21</td>
+<td style="text-align:center">PD21</td>
+</tr>
+<tr>
+<td style="text-align:center">con12-p09</td>
+<td style="text-align:center">GND</td>
+<td style="text-align:center">GND</td>
+</tr>
+<tr>
+<td style="text-align:center">con12-p10</td>
+<td style="text-align:center">PD22</td>
+<td style="text-align:center">PD22</td>
+</tr>
+<tr>
+<td style="text-align:center">con12-p11</td>
+<td style="text-align:center">UART3_RX</td>
+<td style="text-align:center">PD24</td>
+</tr>
+<tr>
+<td style="text-align:center">con12-p12</td>
+<td style="text-align:center">PC09</td>
+<td style="text-align:center">PC09</td>
+</tr>
+<tr>
+<td style="text-align:center">con12-p13</td>
+<td style="text-align:center">UART3_TX</td>
+<td style="text-align:center">PD23</td>
+</tr>
+<tr>
+<td style="text-align:center">con12-p14</td>
+<td style="text-align:center">GND</td>
+<td style="text-align:center">GND</td>
+</tr>
+<tr>
+<td style="text-align:center">con12-p15</td>
+<td style="text-align:center">UART3_CTS</td>
+<td style="text-align:center">PD26</td>
+</tr>
+<tr>
+<td style="text-align:center">con12-p16</td>
+<td style="text-align:center">PC08</td>
+<td style="text-align:center">PC08</td>
+</tr>
+<tr>
+<td style="text-align:center">con12-p17</td>
+<td style="text-align:center">VCC-3.3V</td>
+<td style="text-align:center">VCC-IO</td>
+</tr>
+<tr>
+<td style="text-align:center">con12-p18</td>
+<td style="text-align:center">PC07</td>
+<td style="text-align:center">PC07</td>
+</tr>
+<tr>
+<td style="text-align:center">con12-p19</td>
+<td style="text-align:center">SPI0_MOSI</td>
+<td style="text-align:center">PC02</td>
+</tr>
+<tr>
+<td style="text-align:center">con12-p20</td>
+<td style="text-align:center">GND</td>
+<td style="text-align:center">GND</td>
+</tr>
+<tr>
+<td style="text-align:center">con12-p21</td>
+<td style="text-align:center">SPI0_MIS0</td>
+<td style="text-align:center">PC03</td>
+</tr>
+<tr>
+<td style="text-align:center">con12-p22</td>
+<td style="text-align:center">UART3_RTS</td>
+<td style="text-align:center">PD25</td>
+</tr>
+<tr>
+<td style="text-align:center">con12-p23</td>
+<td style="text-align:center">SPI0_CLK</td>
+<td style="text-align:center">PC00</td>
+</tr>
+<tr>
+<td style="text-align:center">con12-p24</td>
+<td style="text-align:center">SPI0_CS0</td>
+<td style="text-align:center">PC05</td>
+</tr>
+<tr>
+<td style="text-align:center">con12-p12</td>
+<td style="text-align:center">GND</td>
+<td style="text-align:center">GND</td>
+</tr>
+<tr>
+<td style="text-align:center">con12-p13</td>
+<td style="text-align:center">PH03</td>
+<td style="text-align:center">PH03</td>
+</tr>
+</tbody>
+</table>
+<h2 id="wiringop">WiringOP</h2>
+<p><a href="https://github.com/orangepi-xunlong/WiringOP">https://github.com/orangepi-xunlong/WiringOP</a></p>
+<h2 id="gpio-python">GPIO-Python</h2>
+<p><a href="https://opi-gpio.readthedocs.io/en/latest/">https://opi-gpio.readthedocs.io/en/latest/</a><br>
+<a href="https://osi.linux-sunxi.cn/">https://osi.linux-sunxi.cn/</a></p>
+
+                </div>
+
+                <div class="post--keywords" itemprop="keywords">
+					 <a href="https://derekwin.github.io/tag/mexPIPC8u/" class="post--keyword" data-title="orangepioneplus" data-type="post_tag" data-term-id="39">orangepioneplus</a>           </div>
+
+
+
+                      </section>
+    </main>
+</div>
+	<footer class="site-footer u-textAlignCenter">
+    	<div class="footer-branding">
+            <a href="https://derekwin.github.io" title="SECLEE">SECLEE</a>
+									<p class="site-description">SECLEE</p>
+			         </div>
+		 <hr />
+		 <div class="social-links">
+		                       
+                            
+                           
+                            
+                           
+                            
+                           
+                            
+                           
+                            
+                           
+                            
+                           
+                            
+                           
+                            
+                           
+                            
+                           
+                            	
+			<span class="social-link"><a href="1446103183" target="_blank"><i class="iconfont icon-qq"></i></a></span>	
+			                         
+                           
+                            
+                           
+                            
+                           
+				</div>
+        <div class="footer-copy">
+                Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>Link to my site <a href="http://www.seclee.com" target="_green">seclee.com</a>
+        </div>
+
+    </footer>
+	<div class="back-to-top u-hide" onclick="backToTop();"><i class="iconfont icon-xiangshang"></i></div>
+
+<script type='text/javascript' src='https://derekwin.github.io/media/scripts/main.js'></script>
+</body>
+</html>

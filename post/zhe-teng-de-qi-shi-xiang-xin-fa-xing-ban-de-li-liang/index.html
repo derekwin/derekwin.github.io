@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,minimal-ui" />
+    <title>折腾的启示-相信发行版的力量 | SECLEE</title>
+<link rel='stylesheet' id='puma-css'  href='https://derekwin.github.io/styles/main.css' type='text/css' media='screen' />
+<link rel='stylesheet' id='puma-css'  href='https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css' media='screen' />
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<script type='text/javascript' src='https://derekwin.github.io/media/scripts/jquery.js'></script>
+<script type='text/javascript' src='https://derekwin.github.io/media/scripts/jquery-migrate.min.js'></script>
+        <script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+         <script >hljs.initHighlightingOnLoad();</script>
+         
+</head>
+<body class="single single-post postid-3788 single-format-standard">
+	<!--加入跟随滑动的顶部-->
+	<header id="masthead" class="site-header" role="banner">
+		<div class="site-branding">
+			<h1 class="site-title">
+				<a href="https://derekwin.github.io" title="SECLEE">SECLEE</a>
+			</h1>
+		</div>
+
+		<a class="primary-nav-trigger" href="javascript:void(0)">
+			<span class="menu-icon"></span>
+		</a>
+		
+	</header>
+		<div class="site-navigation-wrapper">
+		<nav id="site-navigation" class="main-navigation" role="navigation">
+			<ul class="primary-nav">
+                    
+				<li id="menu-item-30" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-30"><a title="首页" href="/">首页</a></li>
+                
+				<li id="menu-item-30" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-30"><a title="归档" href="/archives">归档</a></li>
+                
+				<li id="menu-item-30" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-30"><a title="标签" href="/tags">标签</a></li>
+                
+				<li id="menu-item-30" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-30"><a title="关于" href="/post/about">关于</a></li>
+                
+	
+			</ul>
+		</nav>			
+	</div>
+	<!--跟随滑动的顶部结束-->
+	<div class="surface-content">    <main class="main-content">
+        <section class="section-body">
+                            <header class="section-header u-textAlignCenter">
+                    <h2 class="grap--h2">折腾的启示-相信发行版的力量</h2>
+                    <div class="block-postMetaWrap">
+                        <time>2020-03-31</time>
+                    </div>
+                </header>
+                <div class="grap">
+					  <p class="with-img"><img width="1139" height="759" src="https://derekwin.github.io/post-images/zhe-teng-de-qi-shi-xiang-xin-fa-xing-ban-de-li-liang.jpg" class="attachment-full size-full wp-post-image" alt="折腾的启示-相信发行版的力量" /></p>
+					<h3 id="orangepioneplus折腾启示">Orangepioneplus折腾启示</h3>
+<h2 id="armbian真香">Armbian真香</h2>
+<p>结论</p>
+<ul>
+<li>不推荐使用orangepi官方的给的镜像，推荐armbian的镜像</li>
+<li>arm下的镜像普遍问题，无法安装对应内核headers，导致没法打热补丁，无法修复网卡等驱动</li>
+<li>关于自己编译内核，制作文件系统，启动镜像，需要给虚拟机分配40g起步的空间</li>
+<li>扩展boot区的思路见1.更改硬盘布局</li>
+<li>开发板实现虚拟路由器，需要网卡支持全双工</li>
+</ul>
+<!-- more -->
+<h4 id="1-更改硬盘布局">1. 更改硬盘布局</h4>
+<ul>
+<li>扩容 -&gt; 下载空间</li>
+<li>修改boot区 -&gt; 换内核<br>
+https://blog.csdn.net/suolong123/article/details/100880588</li>
+</ul>
+<pre><code>    先将p2分成p2 p3 相同大小 或者不分 直接将剩下的空间扩展成3
+    重启
+    将p3格式化成ext4格式 mkfs.ext4，
+    查看uuid，sudo blkid，此时就可以用partuuid和uuid 此处orangepi不支持partuuid 来挂载分区了
+    修改 /etc/fstab
+    修改 /boot/cmdline.txt(树莓派)，/boot/uEnv.txt 改成03
+    保存boot分区到文件系统 sudo cp -r /boot ~/boot
+    # sudo dd if=/dev/mmcblk0p2 of=/dev/mmcblk0p3 复制分区
+    重启
+    sudo resize2fs /dev/mm..p3 不resize是1.5g，resize之后是完整空间 其实这块不resize的话，
+    后面可以直接复制这1.5g到前面，当然此时需要前面划分的时候给2大一点空间
+    ，并且不resize2的空间这样直接将不完整的2前1.5g复制给3的前1.5g，
+    最后统一进行resize（这块用于23合并方案，设计mbr格式硬盘的拷贝）
+    
+    接下来可以在window下进行分区操作 ，可视化不容易错
+    
+    ubuntu中
+    卸载boot sudo umount /boot
+    sudo fdisk /dev/mm..0
+    p 记住开头地址
+    删去2 删去1 
+    
+    此时注意要修改 fstab文件  将分区1的名字改成1的uuid ！！！！因为删除1导致1的LABEL出问题了
+    
+    ps.其实嵌入式系统的硬盘是不常动，所以这里建议将fstab中uuid直接改成 /dev/mm..p2 硬盘的名字
+    ps 如果出现启动不了情况可以找ext4工具在linux下挂载ext4，修改linux的fstab就可以使用了
+    &lt;!--==会造成无法启动 猜测原因是23合并的时候是向前合并 文件系统受损害，
+    也有可能是23合并 uuid变了，所以主分区读不到了，
+    所以此时建议直接用分区名字来标注fstab的启动位置==--&gt;
+    &lt;!--新建1 500M--&gt;
+    &lt;!--t--&gt;
+    &lt;!--1--&gt;
+    &lt;!--c  变成 fat格式--&gt;
+    &lt;!--删去3--&gt;
+    &lt;!--新建3 把2空下的也包含进来  建成3省的修改启动文件--&gt;
+    故 3 不动，将12合并成boot区
+    此时 也可以使用此卡 在windows下给ubuntu传东西将boot区当U盘
+    
+    将备份到桌面的启动文件 拷入分区1
+    # sudo mkfs.vfat /dev/mmcblk0p1
+    # sudo mount /dev/mmcblk0p1 /boot
+    # sudo cp ~/boot/* /boot -rf
+    
+    此时你可能发现boot区大小没变
+    需要到windows下备份boot，将m1分区用window下磁盘工具格式化一次，重新写入boot文件，然后记得一定要改fstab中的启动项为 /dev/m..1
+</code></pre>
+<h4 id="2-换内核-换到440长期稳定版本">2. 换内核 换到4.4.0长期稳定版本</h4>
+<pre><code>- 确保可以下载到headers
+    - apt-cache search linux-image
+    - sudo apt-get install linux-image-4.4.0-snapdragon
+    - sudo apt-get install linux-headers-4.4.0-snapdragon
+    - 提示识别不了uuid那个硬盘 回去吧fsusb改成了/dev/mm.p3
+    - 
+- 此时在boot下生成对应的vmliuxz（非压缩内核镜像）而flash卡启动需要的是压缩的内核头uimage这种，故需要修改
+    - https://blog.csdn.net/yafeixi/article/details/53927433
+    - 本机(WSL)ubuntu : apt-get intall u-boot-tools
+    - 挂载U盘 sudo mount -t drvfs L: /mnt/L
+    - vmlinux与vmlinux.bin的区别 https://blog.csdn.net/weixin_34255793/article/details/92028160
+    - 卡住！！！！！没法完成vmlinux到uimage
+    - 所以好像除了自己编译内核别有别的办法目前
+</code></pre>
+<h6 id="换内核失败-进一步安装各种驱动使用">换内核失败-&gt;进一步安装各种驱动使用</h6>
+<pre><code>- 尝试这么安装 headers https://kernel.ubuntu.com/~kernel-ppa/mainline/
+- 两个headers文件都需要下载 https://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.118/
+- 安装过程中缺少libssl库 http://ports.ubuntu.com/pool/main/o/openssl/libssl1.1_1.1.0g-2ubuntu4_arm64.deb
+- 奇迹 竟然成功了！！！！好吧应该是boot的大小影响了headers的安装
+</code></pre>
+<h4 id="3-安全起见-先装网卡驱动">3. 安全起见 先装网卡驱动</h4>
+<ul>
+<li>tenda -&gt; 8192eu -&gt; https://github.com/Mange/rtl8192eu-linux-driver</li>
+<li>comfast -&gt; 8811CU -&gt; https://github.com/maxhw/rtl8821CU</li>
+</ul>
+<pre><code> comfast为例
+     - git clone https://github.com/maxhw/rtl8821CU.git
+           = 小插曲：github加速，克隆到gitee，然后从gitee下载
+</code></pre>
+<h4 id="4-安装lxde桌面">4. 安装lxde桌面</h4>
+<p>http://www.lijiejie.com/ubuntu-vps-config-lxde-vnc/</p>
+<ul>
+<li>sudo apt-get install vnc4server</li>
+<li>sudo apt-get install lxde</li>
+<li>vncserver :1  输入密码</li>
+<li>vncserver -kill :1  kill掉 修改启动文件</li>
+</ul>
+<pre><code>    vi ~/.vnc/xstartup 
+    尾部追加
+    lxterminal &amp;
+    /usr/bin/lxsession -s LXDE &amp;
+</code></pre>
+<ul>
+<li>
+<p>启动  vncserver -geometry 800x600</p>
+</li>
+<li>
+<p>== 设置开机启动 ==</p>
+</li>
+<li>
+<p>sudo vim /etc/init.d/vncserver</p>
+<pre><code>#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          vncserver
+# Required-Start:    $local_fs
+# Required-Stop:     $local_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start/stop vncserver
+### END INIT INFO
+
+# More details see:
+# http://www.penguintutor.com/linux/vnc
+
+### Customize this entry
+# Set the USER variable to the name of the user to start vncserver under
+export USER='pi'
+### End customization required
+
+eval cd ~$USER
+
+case &quot;$1&quot; in
+start)
+# 启动命令行。此处自定义分辨率、控制台号码或其它参数。
+su $USER -c '/usr/bin/vncserver -depth 16 -geometry 1024x768 :1'
+echo &quot;Starting VNC server for $USER &quot;
+;;
+ stop)
+# 终止命令行。此处控制台号码与启动一致。
+su $USER -c '/usr/bin/vncserver -kill :1'
+echo &quot;vncserver stopped&quot;
+;;
+*)
+echo &quot;Usage: /etc/init.d/vncserver {start|stop}&quot;
+exit 1
+;;
+esac
+exit 0
+</code></pre>
+</li>
+<li>
+<p>sudo chmod 755 /etc/init.d/vncserver</p>
+</li>
+<li>
+<p>sudo update-rc.d vncserver defaults</p>
+</li>
+<li>
+<p>sudo reboot</p>
+</li>
+</ul>
+<h3 id="new-line">NEW LINE</h3>
+<pre><code>使用官方build
+直接吧网卡驱动 编译进镜像
+编译mainline内核
+修改编译脚本，调大boot区的大小 build_image.shs
+
+交叉编译系统环境  ubuntu18.04  60G 
+</code></pre>
+<h2 id="true-right-way">True Right Way</h2>
+<p>Armbian kernel 5.4.X   ubuntu 18.04</p>
+<ul>
+<li>配置 vnc</li>
+<li>区别 桌面环境 是 XFCE</li>
+</ul>
+<pre><code> 1.首先连接上你的服务器，然后安装vncserver，命令如下
+apt-get install vnc4server
+
+2.安装图形界面 
+apt-get install xfce4如果安装不上，就
+apt-get update
+apt-get upgrade
+
+3.启动vncserver
+首先我们先运行一下，以生成配置文件
+vncserver :1   输入一个8位数的密码，VNC客户端密码
+然后kill掉来修改启动文件
+vncserver -kill :1
+
+4.修改vnc的启动文件
+vi ~/.vnc/xstartup 在里面将最后一行注释掉
+x-window-manager &amp; 就是它。在前面加个’#’就注释掉了
+然后加上我们的界面xfce的相关内容
+
+sesion-manager &amp; xfdesktop &amp; xfce4-panel &amp;
+xfce4-menu-plugin &amp;
+xfsettingsd &amp;
+xfconfd &amp;
+xfwm4 &amp;
+
+改完是这个样子:
+
+#!/bin/sh
+
+# Uncomment the following two lines for normal desktop:
+# unset SESSION_MANAGER
+# exec /etc/X11/xinit/xinitrc
+#xrdb $HOME/.Xresources
+#xsettroot -solid grey
+#startxfce4&amp;
+
+[ -x /etc/vnc/xstartup ] &amp;&amp; exec /etc/vnc/xstartup
+[ -r $HOME/.Xresources ] &amp;&amp; xrdb $HOME/.Xresources
+xsetroot -solid grey
+vncconfig -iconic &amp;
+
+x-terminal-emulator -geometry 80x24+10+10 -ls -title &quot;$VNCDESKTOP Desktop&quot; &amp;
+#x-window-manager &amp;
+
+sesion-manager &amp; xfdesktop &amp; xfce4-panel &amp;
+xfce4-menu-plugin &amp;
+xfsettingsd &amp;
+xfconfd &amp;
+xfwm4 &amp;
+
+按ESC键，然后输入:wq,最后按回车键保存退出。
+</code></pre>
+<ul>
+<li>启动无线网卡的全双工模式
+<ul>
+<li>配置静态ip</li>
+</ul>
+</li>
+</ul>
+<pre><code>ubuntu 联网
+
+sudo ip link set wlan0 up
+
+sudo iw dev wlan0 scan | grep SSID
+sudo iw dev wlan0 connect name
+wpa_passphrase name
+# then stdin 密码
+wpa_supplicant -i wlanname -c file.conf
+然后报错，不能使用
+
+上面是废话
+armbian系统 直接使用 sudo armbian-config
+配置网卡
+</code></pre>
+<p>全双工 开热点</p>
+<pre><code>8811不支持全双工
+8192eu需要按文档修复
+很遗憾 鸡生蛋问题 没法安装headers 没法打补丁
+
+https://github.com/oblique/create_ap.git
+    sudo creat_ap -c 11 wlp9s0_ap wlp9s0 youssid yourpasswowd
+</code></pre>
+<p>补充</p>
+<pre><code>看网卡支持的模式
+
+iw list
+
+有AP则有AP模式
+是否支持全双工也有
+</code></pre>
+
+                </div>
+
+                <div class="post--keywords" itemprop="keywords">
+					 <a href="https://derekwin.github.io/tag/lAmI45pI2/" class="post--keyword" data-title="Armbian" data-type="post_tag" data-term-id="39">Armbian</a>           </div>
+
+
+
+                      </section>
+    </main>
+</div>
+	<footer class="site-footer u-textAlignCenter">
+    	<div class="footer-branding">
+            <a href="https://derekwin.github.io" title="SECLEE">SECLEE</a>
+									<p class="site-description">SECLEE</p>
+			         </div>
+		 <hr />
+		 <div class="social-links">
+		                       
+                            
+                           
+                            
+                           
+                            
+                           
+                            
+                           
+                            
+                           
+                            
+                           
+                            
+                           
+                            
+                           
+                            
+                           
+                            	
+			<span class="social-link"><a href="1446103183" target="_blank"><i class="iconfont icon-qq"></i></a></span>	
+			                         
+                           
+                            
+                           
+                            
+                           
+				</div>
+        <div class="footer-copy">
+                Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>Link to my site <a href="http://www.seclee.com" target="_green">seclee.com</a>
+        </div>
+
+    </footer>
+	<div class="back-to-top u-hide" onclick="backToTop();"><i class="iconfont icon-xiangshang"></i></div>
+
+<script type='text/javascript' src='https://derekwin.github.io/media/scripts/main.js'></script>
+</body>
+</html>
