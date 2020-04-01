@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://derekwin.github.io</id>
     <title>SECLEE</title>
-    <updated>2020-04-01T13:48:58.738Z</updated>
+    <updated>2020-04-01T14:05:14.265Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://derekwin.github.io"/>
     <link rel="self" href="https://derekwin.github.io/atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://derekwin.github.io/images/avatar.png</logo>
     <icon>https://derekwin.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, SECLEE</rights>
+    <entry>
+        <title type="html"><![CDATA[这个想法]]></title>
+        <id>https://derekwin.github.io/post/zhe-ge-xiang-fa/</id>
+        <link href="https://derekwin.github.io/post/zhe-ge-xiang-fa/">
+        </link>
+        <updated>2020-04-01T13:51:16.000Z</updated>
+        <content type="html"><![CDATA[<p>我觉得要从 了解 chromium 以及 python的 selenium 开始，chromium支持的原生控件</p>
+<p>下一步 是js  nodejs  vue 为什么这么演化</p>
+<p>构筑基础控件 ， 对比window下的控件，flutter的控件实现</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[一个设想]]></title>
         <id>https://derekwin.github.io/post/yi-ge-she-xiang/</id>
