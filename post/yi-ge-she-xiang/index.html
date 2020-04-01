@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-      <meta charset="UTF-8"/>
+    <meta charset="UTF-8"/>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <meta name="keywords" content="seclee">
 <meta name="description" content="为了专心写东西">
 <meta name="theme-color" content="#000">
-<title>SECLEE</title>
+<title>一个设想 | SECLEE</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1585748925131">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -27,6 +27,8 @@
 
 
 
+    <meta name="description" content="一个设想" />
+    <meta name="keywords" content="想法" />
   </head>
   <body>
     <div class="head-top-line"></div>
@@ -61,7 +63,7 @@
             
               
             
-            <li class="nav-item nav-item-active">
+            <li class="nav-item ">
               
               
                 <a href="/" target="_self">
@@ -152,8 +154,23 @@
       
       <div class="section-layout gemini ">
         <div class="section-layout-wrapper">
-          <div id="sidebarMeta" class="sidebar">
-    
+          
+
+<div class="sidebar">
+  
+    <div class="sidebar-box box-shadow-wrapper bg-color right-motion" id="sidebar">
+      
+        <div class="post-list-sidebar">
+          <div class="sidebar-title">
+            <span id="tocSideBar" class="sidebar-title-item sidebar-title-active">文章目录</span>
+            <span id="metaSideBar" class="sidebar-title-item">站点概览</span>
+          </div>
+        </div>
+      
+      <div class="sidebar-body gemini" id="sidebar_body">
+        
+          
+            
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -205,27 +222,92 @@
 
 
 </div>
+          
+        
+      </div>
+    </div>
+  
 </div>
 <script>
-  let sidebarMeta = document.querySelector('#sidebarMeta');
-  let scheme = 'gemini';
-  let sidebarWrapper = document.querySelector('.sidebar-wrapper');
-  if (sidebarMeta && (scheme === 'pisces' || scheme === 'gemini')) {
-    document.addEventListener('scroll', function(e) {
-      if (document.scrollingElement.scrollTop > parseInt(sidebarMeta.style.marginTop) + 10) {
-        sidebarWrapper.classList.add('home-sidebar-fixed')
-      } else {
-        sidebarWrapper.classList.remove('home-sidebar-fixed')
+  const SIDEBAR_TITLE_ACTIVE = 'sidebar-title-active';
+  const SIDEBAR_BODY_ACTIVE = 'sidebar-body-active';
+  const SLIDE_UP_IN = 'slide-up-in';
+
+  let sidebar = document.querySelector('#sidebar'),
+  tocSideBar = document.querySelector('#tocSideBar'),
+  metaSideBar = document.querySelector('#metaSideBar'),
+  postToc = document.querySelector('#post_toc'),
+  postSiteMeta = document.querySelector('#post_side_meta'),
+  sidebarTitle = document.querySelector('.sidebar-title'),
+  sidebarBody = document.querySelector('#sidebar_body');
+
+  tocSideBar && tocSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  metaSideBar && metaSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  function toggleSidebar(e) {
+    let currentTitle = document.querySelector("."+SIDEBAR_TITLE_ACTIVE);
+    if (currentTitle == e.srcElement) {
+      return ;
+    }
+    let current, showElement, hideElement;
+    if (e.srcElement == metaSideBar) {
+      showElement = postSiteMeta;
+      hideElement = postToc;
+    } else if (e.srcElement == tocSideBar){
+      showElement = postToc;
+      hideElement = postSiteMeta;
+    }
+    currentTitle.classList.remove(SIDEBAR_TITLE_ACTIVE);
+    e.srcElement.classList.add(SIDEBAR_TITLE_ACTIVE);
+
+    window.Velocity(hideElement, 'stop');
+    window.Velocity(hideElement, 'transition.slideUpOut', {
+      display: 'none',
+      duration: 200,
+      complete: function () {
+        window.Velocity(showElement, 'transition.slideDownIn', {
+          duration: 200
+        });
       }
-    });
+    })
+    hideElement.classList.remove(SIDEBAR_BODY_ACTIVE);
+    showElement.classList.add(SIDEBAR_BODY_ACTIVE);
   }
-  </script>
-          <div class="section-box gemini">
-            <section class="section  posts-expand slide-down-in">
-              
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <header class="post-header">
+
+  postToc && postToc.addEventListener('transitionend', function() {
+    this.classList.remove(SLIDE_UP_IN);
+  });
+
+  if (sidebarBody) {
+    if (sidebarBody.classList.contains('pisces') || sidebarBody.classList.contains('gemini')) {
+      let hasFix = false;
+      let scrollEl = document.querySelector('.main-continer');
+      let limitTop = document.querySelector('#nav_ul').children.length * 42 + 162;
+      window.addEventListener('scroll', function(e) {
+        if (document.scrollingElement.scrollTop >= limitTop) {
+          if (!hasFix) {
+            sidebar.classList.add('sidebar-fixed');
+            hasFix = true;
+          }
+        } else {
+          if (hasFix) {
+            sidebar.classList.remove('sidebar-fixed');
+            hasFix = false;
+          }
+        }
+      });
+    }
+  }
+  
+</script>
+          <div class="section-box box-shadow-wrapper">
+            <div class="section bg-color post post-page">
+              <header class="post-header">
   <h1 class="post-title">
     <a class="post-title-link" href="https://derekwin.github.io/post/yi-ge-she-xiang/">
       一个设想
@@ -271,232 +353,72 @@
     
   </div>
 </header>
-      <div class="post-body">
-        
-          
-        
-        
-        <div class="post-button text-center">
-          <a class="btn" href="https://derekwin.github.io/post/yi-ge-she-xiang/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-    </div>
-  </article>
-
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <header class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://derekwin.github.io/post/zhe-teng-de-qi-shi-xiang-xin-fa-xing-ban-de-li-liang/">
-      折腾的启示-相信发行版的力量
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-      <span class="meta-item">
-        <i class="fa fa-thumb-tack"></i>
-        <span>置顶</span>
-        <span class="post-meta-divider">|</span>
-      </span>
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span>发布于</span>
-      <span>2020-03-31</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-      <span class="meta-item">
-        <i class="fa fa-folder-o"></i>
-        <span class="pc-show">分类于</span>
-        
-          
-            <a href="https://derekwin.github.io/tag/lAmI45pI2/">
-              <span>Armbian</span>
-            </a>
-          
-        
-      </span>
-      <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>9分钟</span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>1866<span class="pc-show">字数</span></span>
-    </span>
-    
-  </div>
-</header>
-      <div class="post-body">
-        
-          <h3 id="orangepioneplus折腾启示">Orangepioneplus折腾启示</h3>
-<h2 id="armbian真香">Armbian真香</h2>
-<p>结论</p>
+              <div class="post-body next-md-body" id="post_body">
+                <p><strong>想法最初来源是用python开发一个音乐宿主软件</strong></p>
 <ul>
-<li>不推荐使用orangepi官方的给的镜像，推荐armbian的镜像</li>
-<li>arm下的镜像普遍问题，无法安装对应内核headers，导致没法打热补丁，无法修复网卡等驱动</li>
-<li>关于自己编译内核，制作文件系统，启动镜像，需要给虚拟机分配40g起步的空间</li>
-<li>扩展boot区的思路见1.更改硬盘布局</li>
-<li>开发板实现虚拟路由器，需要网卡支持全双工</li>
+<li><mark>怎么构建应用？</mark></li>
 </ul>
+<p>最先想到的就是python的强大的web框架搭配nodejs前端框架。好像很多宿主软件都大量的采用了js做本地界面，也有一些大型应用在使用js开发。</p>
+<ul>
+<li><mark>怎么选择后端框架？</mark></li>
+</ul>
+<p>由于软件是运行在本地的，所以大可不必过分考虑web安全中的那些风险，所以选择框架的首要要求是性能和可扩展性，目前来说，我很喜欢flask的轻量和django的可拔插属性。<br>
+我觉得做软件需要的是一个像django一样的可以很方便的模块化拔插，但是又像flask一样，不那么臃肿（相对于开发应用），或者是专为了本地应用设计的一套模块。<br>
+可拔插属性很重要，因为在音乐制作的过程中，插件的拔插也是这样的形式。</p>
+<p>所以，开发一个类似web框架实现的应用程序内核？在该内核的基础上引入jit属性，或者是 直接选择pypy作为主力语言（分析会丢失大量python库的支持），可以参考学习一下chrome nodejs内核</p>
+<ul>
+<li><mark>怎么选择前端，界面？</mark></li>
+</ul>
+<p>由于软件是运行在本地，所以大可不必考虑轻量这个问题，目前看硬盘读取速度是远大于网络速度的。<br>
+之前使用过quasar这样的全端通用的框架，而且需要了解一下flutter这个谷歌框架，如果可行，参照quasar这个框架的效果，实现对我们那个 ‘web框架应用程序内核’内建一套前端框架，但是要开放他的可扩展性，基础的框架最好只实现基本的结构模块，具体的美化接口一定要开出来。</p>
+<p>所以综上，需要实现一个类似于django和quasar的集合体的，但是专注于本地应用构建的框架，可以理解为程序内核，对了，这个内核需要一个浏览器一样的东西，暂定chrome内核。</p>
+<p>这样，就可以单纯利用python和js,css构建一个复杂的桌面应用，而且我希望他是跨平台的。</p>
+<ul>
+<li><mark>音频处理的插件，dsp api</mark></li>
+</ul>
+<p>python目前的音频处理库真的很少，这很反常，python有如此强的计算库，numpy等等，实现音频的处理应该是远远强大于其他语言的</p>
+<p>基于基础的音频处理c++的库，利用py构建一个底层的处理库，类似于abletonlive中内嵌的Max，，有了这个模块化的库，就可以轻松实现 模块合成器 的效果</p>
+<p>maybe 会构筑一个 区别于的 stegbin的 vst通用接口的新接口</p>
+<p><strong><mark>一个开源的宿主软件！！！是否有可能呢？</mark></strong></p>
 
-        
-        
-        <div class="post-button text-center">
-          <a class="btn" href="https://derekwin.github.io/post/zhe-teng-de-qi-shi-xiang-xin-fa-xing-ban-de-li-liang/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-    </div>
-  </article>
-
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <header class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://derekwin.github.io/post/gpioorangepioneplus/">
-      GPIO.orangepioneplus
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span>发布于</span>
-      <span>2020-03-31</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-      <span class="meta-item">
-        <i class="fa fa-folder-o"></i>
-        <span class="pc-show">分类于</span>
-        
-          
-            <a href="https://derekwin.github.io/tag/mexPIPC8u/">
-              <span>orangepioneplus</span>
-            </a>
-          
-        
-      </span>
-      <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>2分钟</span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>204<span class="pc-show">字数</span></span>
-    </span>
-    
-  </div>
-</header>
-      <div class="post-body">
-        
-          
-        
-        
-        <div class="post-button text-center">
-          <a class="btn" href="https://derekwin.github.io/post/gpioorangepioneplus/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-    </div>
-  </article>
-
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <header class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://derekwin.github.io/post/hello-gridea/">
-      Hello Gridea
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span>发布于</span>
-      <span>2018-12-12</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-      <span class="meta-item">
-        <i class="fa fa-folder-o"></i>
-        <span class="pc-show">分类于</span>
-        
-          
-            <a href="https://derekwin.github.io/tag/KiiIZVScy/">
-              <span>Gridea</span>
-            </a>
-          
-        
-      </span>
-      <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>2分钟</span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>298<span class="pc-show">字数</span></span>
-    </span>
-    
-  </div>
-</header>
-      <div class="post-body">
-        
-          <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-
-        
-        
-        <div class="post-button text-center">
-          <a class="btn" href="https://derekwin.github.io/post/hello-gridea/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-    </div>
-  </article>
-  
-              
-              
-<div class="page bg-color">
-  <ul class="pagination-ul">
-    
-    
-      
-        <li class="pagination-li pagination-active">
-            <a href="/page/../">
-              1
-            </a>
-        </li>
-      
-    
-    
+              </div>
+              <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      SECLEE
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://derekwin.github.io/post/yi-ge-she-xiang/" title="一个设想">一个设想</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，转载请注明出处！
+    </li>
   </ul>
+  <div class="tags">
+    
+      <a href="https://derekwin.github.io/tag/E5YtWxYAF/"># 想法</a>
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
+      
+    </div>
+    <div class="nav-next">
+      
+        <a class="nav-pc-next" title="GPIO.orangepioneplus" href="https://derekwin.github.io/post/gpioorangepioneplus/">GPIO.orangepioneplus</a>
+        <a class="nav-mobile-next" title="GPIO.orangepioneplus" href="https://derekwin.github.io/post/gpioorangepioneplus/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
+      
+    </div>
+  </div>
 </div>
-            </section>
+              
+  
+
+            </div>
           </div>
         </div>
       </div>

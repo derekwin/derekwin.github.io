@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://derekwin.github.io</id>
     <title>SECLEE</title>
-    <updated>2020-03-31T05:48:15.568Z</updated>
+    <updated>2020-04-01T13:48:58.738Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://derekwin.github.io"/>
     <link rel="self" href="https://derekwin.github.io/atom.xml"/>
@@ -10,6 +10,40 @@
     <logo>https://derekwin.github.io/images/avatar.png</logo>
     <icon>https://derekwin.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, SECLEE</rights>
+    <entry>
+        <title type="html"><![CDATA[一个设想]]></title>
+        <id>https://derekwin.github.io/post/yi-ge-she-xiang/</id>
+        <link href="https://derekwin.github.io/post/yi-ge-she-xiang/">
+        </link>
+        <updated>2020-04-01T10:04:37.000Z</updated>
+        <content type="html"><![CDATA[<p><strong>想法最初来源是用python开发一个音乐宿主软件</strong></p>
+<ul>
+<li><mark>怎么构建应用？</mark></li>
+</ul>
+<p>最先想到的就是python的强大的web框架搭配nodejs前端框架。好像很多宿主软件都大量的采用了js做本地界面，也有一些大型应用在使用js开发。</p>
+<ul>
+<li><mark>怎么选择后端框架？</mark></li>
+</ul>
+<p>由于软件是运行在本地的，所以大可不必过分考虑web安全中的那些风险，所以选择框架的首要要求是性能和可扩展性，目前来说，我很喜欢flask的轻量和django的可拔插属性。<br>
+我觉得做软件需要的是一个像django一样的可以很方便的模块化拔插，但是又像flask一样，不那么臃肿（相对于开发应用），或者是专为了本地应用设计的一套模块。<br>
+可拔插属性很重要，因为在音乐制作的过程中，插件的拔插也是这样的形式。</p>
+<p>所以，开发一个类似web框架实现的应用程序内核？在该内核的基础上引入jit属性，或者是 直接选择pypy作为主力语言（分析会丢失大量python库的支持），可以参考学习一下chrome nodejs内核</p>
+<ul>
+<li><mark>怎么选择前端，界面？</mark></li>
+</ul>
+<p>由于软件是运行在本地，所以大可不必考虑轻量这个问题，目前看硬盘读取速度是远大于网络速度的。<br>
+之前使用过quasar这样的全端通用的框架，而且需要了解一下flutter这个谷歌框架，如果可行，参照quasar这个框架的效果，实现对我们那个 ‘web框架应用程序内核’内建一套前端框架，但是要开放他的可扩展性，基础的框架最好只实现基本的结构模块，具体的美化接口一定要开出来。</p>
+<p>所以综上，需要实现一个类似于django和quasar的集合体的，但是专注于本地应用构建的框架，可以理解为程序内核，对了，这个内核需要一个浏览器一样的东西，暂定chrome内核。</p>
+<p>这样，就可以单纯利用python和js,css构建一个复杂的桌面应用，而且我希望他是跨平台的。</p>
+<ul>
+<li><mark>音频处理的插件，dsp api</mark></li>
+</ul>
+<p>python目前的音频处理库真的很少，这很反常，python有如此强的计算库，numpy等等，实现音频的处理应该是远远强大于其他语言的</p>
+<p>基于基础的音频处理c++的库，利用py构建一个底层的处理库，类似于abletonlive中内嵌的Max，，有了这个模块化的库，就可以轻松实现 模块合成器 的效果</p>
+<p>maybe 会构筑一个 区别于的 stegbin的 vst通用接口的新接口</p>
+<p><strong><mark>一个开源的宿主软件！！！是否有可能呢？</mark></strong></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[GPIO.orangepioneplus]]></title>
         <id>https://derekwin.github.io/post/gpioorangepioneplus/</id>
@@ -287,56 +321,60 @@
 <!-- more -->
 <h4 id="1-更改硬盘布局">1. 更改硬盘布局</h4>
 <ul>
-<li>扩容 -&gt; 下载空间</li>
-<li>修改boot区 -&gt; 换内核<br>
-https://blog.csdn.net/suolong123/article/details/100880588</li>
-</ul>
-<pre><code>    先将p2分成p2 p3 相同大小 或者不分 直接将剩下的空间扩展成3
-    重启
-    将p3格式化成ext4格式 mkfs.ext4，
-    查看uuid，sudo blkid，此时就可以用partuuid和uuid 此处orangepi不支持partuuid 来挂载分区了
-    修改 /etc/fstab
-    修改 /boot/cmdline.txt(树莓派)，/boot/uEnv.txt 改成03
-    保存boot分区到文件系统 sudo cp -r /boot ~/boot
-    # sudo dd if=/dev/mmcblk0p2 of=/dev/mmcblk0p3 复制分区
-    重启
-    sudo resize2fs /dev/mm..p3 不resize是1.5g，resize之后是完整空间 其实这块不resize的话，
-    后面可以直接复制这1.5g到前面，当然此时需要前面划分的时候给2大一点空间
-    ，并且不resize2的空间这样直接将不完整的2前1.5g复制给3的前1.5g，
-    最后统一进行resize（这块用于23合并方案，设计mbr格式硬盘的拷贝）
-    
-    接下来可以在window下进行分区操作 ，可视化不容易错
-    
-    ubuntu中
-    卸载boot sudo umount /boot
-    sudo fdisk /dev/mm..0
-    p 记住开头地址
-    删去2 删去1 
-    
-    此时注意要修改 fstab文件  将分区1的名字改成1的uuid ！！！！因为删除1导致1的LABEL出问题了
-    
-    ps.其实嵌入式系统的硬盘是不常动，所以这里建议将fstab中uuid直接改成 /dev/mm..p2 硬盘的名字
-    ps 如果出现启动不了情况可以找ext4工具在linux下挂载ext4，修改linux的fstab就可以使用了
-    &lt;!--==会造成无法启动 猜测原因是23合并的时候是向前合并 文件系统受损害，
-    也有可能是23合并 uuid变了，所以主分区读不到了，
-    所以此时建议直接用分区名字来标注fstab的启动位置==--&gt;
-    &lt;!--新建1 500M--&gt;
-    &lt;!--t--&gt;
-    &lt;!--1--&gt;
-    &lt;!--c  变成 fat格式--&gt;
-    &lt;!--删去3--&gt;
-    &lt;!--新建3 把2空下的也包含进来  建成3省的修改启动文件--&gt;
-    故 3 不动，将12合并成boot区
-    此时 也可以使用此卡 在windows下给ubuntu传东西将boot区当U盘
-    
-    将备份到桌面的启动文件 拷入分区1
-    # sudo mkfs.vfat /dev/mmcblk0p1
-    # sudo mount /dev/mmcblk0p1 /boot
-    # sudo cp ~/boot/* /boot -rf
-    
-    此时你可能发现boot区大小没变
-    需要到windows下备份boot，将m1分区用window下磁盘工具格式化一次，重新写入boot文件，然后记得一定要改fstab中的启动项为 /dev/m..1
+<li>
+<p>扩容 -&gt; 下载空间</p>
+</li>
+<li>
+<p>修改boot区 -&gt; 换内核<br>
+https://blog.csdn.net/suolong123/article/details/100880588</p>
+<pre><code>先将p2分成p2 p3 相同大小 或者不分 直接将剩下的空间扩展成3
+重启
+将p3格式化成ext4格式 mkfs.ext4，
+查看uuid，sudo blkid，此时就可以用partuuid和uuid 此处orangepi不支持partuuid 来挂载分区了
+修改 /etc/fstab
+修改 /boot/cmdline.txt(树莓派)，/boot/uEnv.txt 改成03
+保存boot分区到文件系统 sudo cp -r /boot ~/boot
+# sudo dd if=/dev/mmcblk0p2 of=/dev/mmcblk0p3 复制分区
+重启
+sudo resize2fs /dev/mm..p3 不resize是1.5g，resize之后是完整空间 其实这块不resize的话，
+后面可以直接复制这1.5g到前面，当然此时需要前面划分的时候给2大一点空间
+，并且不resize2的空间这样直接将不完整的2前1.5g复制给3的前1.5g，
+最后统一进行resize（这块用于23合并方案，设计mbr格式硬盘的拷贝）
+
+接下来可以在window下进行分区操作 ，可视化不容易错
+
+ubuntu中
+卸载boot sudo umount /boot
+sudo fdisk /dev/mm..0
+p 记住开头地址
+删去2 删去1 
+
+此时注意要修改 fstab文件  将分区1的名字改成1的uuid ！！！！因为删除1导致1的LABEL出问题了
+
+ps.其实嵌入式系统的硬盘是不常动，所以这里建议将fstab中uuid直接改成 /dev/mm..p2 硬盘的名字
+ps 如果出现启动不了情况可以找ext4工具在linux下挂载ext4，修改linux的fstab就可以使用了
+&lt;!--==会造成无法启动 猜测原因是23合并的时候是向前合并 文件系统受损害，
+也有可能是23合并 uuid变了，所以主分区读不到了，
+所以此时建议直接用分区名字来标注fstab的启动位置==--&gt;
+&lt;!--新建1 500M--&gt;
+&lt;!--t--&gt;
+&lt;!--1--&gt;
+&lt;!--c  变成 fat格式--&gt;
+&lt;!--删去3--&gt;
+&lt;!--新建3 把2空下的也包含进来  建成3省的修改启动文件--&gt;
+故 3 不动，将12合并成boot区
+此时 也可以使用此卡 在windows下给ubuntu传东西将boot区当U盘
+
+将备份到桌面的启动文件 拷入分区1
+# sudo mkfs.vfat /dev/mmcblk0p1
+# sudo mount /dev/mmcblk0p1 /boot
+# sudo cp ~/boot/* /boot -rf
+
+此时你可能发现boot区大小没变
+需要到windows下备份boot，将m1分区用window下磁盘工具格式化一次，重新写入boot文件，然后记得一定要改fstab中的启动项为 /dev/m..1
 </code></pre>
+</li>
+</ul>
 <h4 id="2-换内核-换到440长期稳定版本">2. 换内核 换到4.4.0长期稳定版本</h4>
 <pre><code>- 确保可以下载到headers
     - apt-cache search linux-image
@@ -363,24 +401,30 @@ https://blog.csdn.net/suolong123/article/details/100880588</li>
 <li>tenda -&gt; 8192eu -&gt; https://github.com/Mange/rtl8192eu-linux-driver</li>
 <li>comfast -&gt; 8811CU -&gt; https://github.com/maxhw/rtl8821CU</li>
 </ul>
-<pre><code> comfast为例
-     - git clone https://github.com/maxhw/rtl8821CU.git
-           = 小插曲：github加速，克隆到gitee，然后从gitee下载
+<pre><code>    comfast为例
+    - git clone https://github.com/maxhw/rtl8821CU.git
+    = 小插曲：github加速，克隆到gitee，然后从gitee下载
 </code></pre>
 <h4 id="4-安装lxde桌面">4. 安装lxde桌面</h4>
 <p>http://www.lijiejie.com/ubuntu-vps-config-lxde-vnc/</p>
 <ul>
-<li>sudo apt-get install vnc4server</li>
-<li>sudo apt-get install lxde</li>
-<li>vncserver :1  输入密码</li>
-<li>vncserver -kill :1  kill掉 修改启动文件</li>
-</ul>
-<pre><code>    vi ~/.vnc/xstartup 
-    尾部追加
-    lxterminal &amp;
-    /usr/bin/lxsession -s LXDE &amp;
+<li>
+<p>sudo apt-get install vnc4server</p>
+</li>
+<li>
+<p>sudo apt-get install lxde</p>
+</li>
+<li>
+<p>vncserver :1  输入密码</p>
+</li>
+<li>
+<p>vncserver -kill :1  kill掉 修改启动文件</p>
+<pre><code>vi ~/.vnc/xstartup 
+尾部追加
+lxterminal &amp;
+/usr/bin/lxsession -s LXDE &amp;
 </code></pre>
-<ul>
+</li>
 <li>
 <p>启动  vncserver -geometry 800x600</p>
 </li>
@@ -452,7 +496,7 @@ exit 0
 <li>配置 vnc</li>
 <li>区别 桌面环境 是 XFCE</li>
 </ul>
-<pre><code> 1.首先连接上你的服务器，然后安装vncserver，命令如下
+<pre><code>1.首先连接上你的服务器，然后安装vncserver，命令如下
 apt-get install vnc4server
 
 2.安装图形界面 
